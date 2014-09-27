@@ -8,6 +8,10 @@
 
 node.set['solr']['data'] = '/solr/data'
 node.set['solr']['home'] = '/solr'
+node.set['solr']['env_vars'] = {
+	'solr.solr.home' => node['solr']['home'],
+	'solr.data.dir' => node['solr']['data']
+}
 node.set['jetty']['port'] = 8983
 
 
