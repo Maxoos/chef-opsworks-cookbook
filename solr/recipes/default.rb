@@ -6,7 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 
-node.set['solr']['data'] = '/solr'
+node.set['solr']['data'] = '/solr/data'
+node.set['solr']['home'] = '/solr'
 
 
 include_recipe 'hipsnip-solr'
