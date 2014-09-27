@@ -16,3 +16,26 @@ node.set['jetty']['port'] = 8983
 
 
 include_recipe 'hipsnip-solr'
+
+
+solrconfig = "#{node['solr']['home']}/conf/solrconfig.xml"
+template solrconfig do
+  source 'solrconfig.erb'
+  mode '755'
+  notifies :restart, "service[jetty]"
+end
+
+schema = "#{node['solr']['home']}/conf/schema.xml"
+template schema do
+  source 'schema.erb'
+  mode '755'
+  notifies :restart, "service[jetty]"
+end
+
+directory node['solr']['home'] do
+  owner node['jetty']['user']
+  group node['jetty']['group']
+  mode "755"
+  recursive true
+  action :create
+end
