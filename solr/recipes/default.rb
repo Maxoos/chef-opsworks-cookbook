@@ -21,6 +21,8 @@ include_recipe 'hipsnip-solr'
 solrconfig = "#{node['solr']['home']}/conf/solrconfig.xml"
 template solrconfig do
   source 'solrconfig.erb'
+  owner node['jetty']['user']
+  group node['jetty']['group']
   mode '755'
   notifies :restart, "service[jetty]"
 end
@@ -28,14 +30,9 @@ end
 schema = "#{node['solr']['home']}/conf/schema.xml"
 template schema do
   source 'schema.erb'
+  owner node['jetty']['user']
+  group node['jetty']['group']
   mode '755'
   notifies :restart, "service[jetty]"
 end
 
-directory node['solr']['home'] do
-  owner node['jetty']['user']
-  group node['jetty']['group']
-  mode "755"
-  recursive true
-  action :create
-end
