@@ -1,4 +1,4 @@
-name             'chef-opsworks-solr'
+name             'chef-opsworks-imagemagic'
 maintainer       'Max Penson'
 maintainer_email 'max.penson@gmail.com'
 license          'All rights reserved'
