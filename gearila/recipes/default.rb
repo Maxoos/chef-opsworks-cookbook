@@ -36,3 +36,7 @@ template schema do
   notifies :restart, "service[jetty]"
 end
 
+
+
+include_recipe "imagemagick"
+include_recipe "imagemagick::rmagick"
